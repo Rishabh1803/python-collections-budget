@@ -18,10 +18,10 @@ def main():
     
     # Call timeit.timeit()
     # Print the timeit result
-    print(timeit.timeit(stmt = 'expenses.categorize_for_loop()', setup = """from . import Expense\nexpenses = Expense.Expenses()\nexpenses.read_expenses('data/spending_data.csv')""", number = 100000, globals = globals()))
+    print(timeit.timeit(stmt = 'expenses.categorize_for_loop()', setup = """\nfrom . import Expense\nexpenses = Expense.Expenses()\nexpenses.read_expenses('data/spending_data.csv')\n""", number = 100000, globals = globals()))
     
     # Duplicate the timeit.timeit() call for set comprehension
-    print(timeit.timeit(stmt = 'expenses.categorize_set_comprehension()', setup = """from . import Expense\nexpenses = Expense.Expenses()\nexpenses.read_expenses('data/spending_data.csv')""", number = 100000, globals = globals()))
+    print(timeit.timeit(stmt = 'expenses.categorize_set_comprehension()', setup = """\nfrom . import Expense\nexpenses = Expense.Expenses()\nexpenses.read_expenses('data/spending_data.csv')\n""", number = 100000, globals = globals()))
 
     '''Set comprehension may be faster than a for loop in general for a single loop. However, we had 2 set comprehensions that each required looping to check separate conditionals whereas the for loop method only used one iteration to check the conditionals.'''
 
